@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #8e44ad; /* Deep Violet */
+            --secondary: #8B5CF6; /* Light Violet */
+            --accent: #ff7b00; /* Orange remains for contrast */
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-image: linear-gradient(rgba(142, 68, 173, 0.1), rgba(142, 68, 173, 0.1)), url('static/home.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #2d3436;
+        }
+
+        /* --- Header / Navbar --- */
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #4b4b4b;
+            margin: 0 15px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .header nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        .header nav a:hover:after { width: 100%; }
+        .header nav a:hover { color: var(--primary); }
+
+        .logout-btn {
+            background: #ff4757;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        /* --- Intro Section --- */
+        .intro-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 60px;
+            max-width: 1100px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .intro-text h1 {
+            font-size: 42px;
+            color: #8E44AD;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .intro-text p {
+            font-size: 17px;
+            color: #5B21B6
+
+;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .get-started-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(142, 68, 173, 0.3);
+            transition: 0.4s;
+        }
+
+        .get-started-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(142, 68, 173, 0.4);
+        }
+
+        /* --- Chatbot UI --- */
+        .chatbot-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 10px 25px rgba(142, 68, 173, 0.5);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chatbot-icon:hover { transform: scale(1.1) rotate(10deg); }
+
+        .chat-popup {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 380px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            border: 1px solid #eee;
+        }
+
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-body {
+            height: 400px;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f9f9ff;
+        }
+
+        .botText span {
+            background: var(--secondary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+            display: inline-block;
+            max-width: 80%;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .userText { text-align: right; }
+        .userText span {
+            background: #e0e0e0;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+            display: inline-block;
+            max-width: 80%;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .user-input {
+            padding: 15px;
+            background: white;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .user-input input {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .user-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- Chart Slider --- */
+        .chart-slider {
+            position: fixed;
+            top: 100px;
+            right: -450px; /* Hidden initially */
+            width: 400px;
+            background: white;
+            border-radius: 20px 0 0 20px;
+            padding: 25px;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: 0.5s ease;
+            z-index: 999;
+        }
+
+        .chart-slider.active { right: 0; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .glass-box { flex-direction: column; padding: 30px; text-align: center; }
+            .header { padding: 15px 20px; }
+            .intro-text h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo"><i class="fas fa-wallet"></i> XpenseTrack</div>
+        <nav>
+            <a href="expenses_details"><i class="fas fa-plus-circle"></i> Add Details</a>
+            <a href="/ocr"><i class="fas fa-camera"></i> OCR Scan</a>
+            <a href="/month_expenses"><i class="fas fa-calendar-alt"></i> History</a>
+            <a href="#" onclick="toggleChartSlider()"><i class="fas fa-chart-pie"></i> Insights</a>
+        </nav>
+        <a href="/">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </header>
+
+    <div id="chartSlider" class="chart-slider">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="color: var(--primary)">Monthly Breakdown</h3>
+            <span style="cursor: pointer;" onclick="toggleChartSlider()"><i class="fas fa-times"></i></span>
+        </div>
+        <img src="static/uploads/expense_pie.png" style="width: 100%; border-radius: 15px;">
+        <p style="margin-top: 15px; font-size: 13px; color: #666; text-align: center;">Visual representation of your spending categories.</p>
+    </div>
+
+    <section class="intro-section">
+        <div class="glass-box">
+            <div class="intro-text">
+                <h1>Master Your Finances <br><span style="color: var(--secondary)">Effortlessly.</span></h1>
+                <p>
+                    Experience the future of personal budgeting. Use AI-powered scanning, 
+                    get real-time spending insights, and chat with our financial bot to reach your savings goals faster.
+                </p>
+                <a href="expenses_details">
+                    <button class="get-started-btn">Get Started Now</button>
+                </a>
+            </div>
+            <div class="intro-image" style="flex: 1; display: flex; justify-content: center;">
+                <div style="position: relative;">
+                    <img src="static/home.jpg" alt="Dashboard Preview" style="max-width: 400px; border-radius: 20px; transform: rotate(2deg); box-shadow: 20px 20px 0px var(--primary);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <span><i class="fas fa-robot"></i> Fin-Bot Assistant</span>
+            <i class="fas fa-times" onclick="toggleChatbot()" style="cursor: pointer;"></i>
+        </div>
+        <div class="chat-body" id="chatbox">
+            <p class="botText"><span>👋 Hi! I'm your financial assistant. How can I help you save today?</span></p>
+        </div>
+        <div class="user-input">
+            <input id="text" type="text" placeholder="Type a message...">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            <button id="voiceBtn" style="background: var(--accent);"><i class="fas fa-microphone"></i></button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function toggleChartSlider() {
+            $('#chartSlider').toggleClass('active');
+        }
+
+        function toggleChatbot() {
+            $("#chatPopup").fadeToggle(300).css("display", "flex");
+        }
+
+        function sendMessage() {
+            var rawText = $("#text").val().trim();
+            if (rawText === "") return;
+
+            var userHtml = '<div class="userText"><span>' + rawText + '</span></div>';
+            $("#text").val("");
+            $("#chatbox").append(userHtml);
+
+            $(".chat-body").animate({ scrollTop: $(".chat-body")[0].scrollHeight }, 500);
+
+            $.post("/get", { msg: rawText }).done(function(data) {
+                var botHtml = '<div class="botText"><span>' + data + '</span></div>';
+                $("#chatbox").append(botHtml);
+                $(".chat-body").animate({ scrollTop: $(".chat-body")[0].scrollHeight }, 500);
+            });
+        }
+
+        // Voice Recognition
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            $("#voiceBtn").click(function() { recognition.start(); });
+            recognition.onresult = function(event) {
+                $("#text").val(event.results[0][0].transcript);
+                sendMessage();
+            };
+        }
+
+        // Enter key to send
+        $("#text").keypress(function(e) {
+            if(e.which == 13) sendMessage();
+        });
+    </script>
+</body>
+</html>

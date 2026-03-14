@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly History | XpenseTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #8e44ad; /* Deep Violet */
+            --secondary: #a29bfe; /* Light Violet */
+            --accent: #ff7b00; 
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(142, 68, 173, 0.15), rgba(142, 68, 173, 0.15)), url('static/month.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        /* --- Header / Navbar --- */
+        .header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+        }
+
+        /* --- Main Content --- */
+        .container {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            background: var(--primary);
+            width: fit-content;
+            margin: 0 auto 30px auto;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            font-size: 22px;
+        }
+
+        /* --- Table Styling --- */
+        .table-wrapper {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px 10px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        th:first-child { border-radius: 12px 0 0 12px; }
+        th:last-child { border-radius: 0 12px 12px 0; }
+
+        td {
+            padding: 15px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(142, 68, 173, 0.1);
+            color: #444;
+            font-weight: 500;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(162, 155, 254, 0.1);
+            transition: 0.2s;
+        }
+
+        /* Styling for the Total column */
+        td:last-child {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Responsive Labeling */
+        @media screen and (max-width: 992px) {
+            .header { padding: 15px 20px; }
+            th, td { padding: 12px 5px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo"><i class="fas fa-chart-line"></i> XpenseTrack</div>
+        <nav>
+            <span style="color: var(--primary); font-weight: 600;">Monthly Analytics</span>
+        </nav>
+        <a href="/dashboard" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <div class="container">
+        <h2><i class="fas fa-calendar-alt"></i> Monthly Expense Summary</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Income</th>
+                        <th>EMI</th>
+                        <th>Groceries</th>
+                        <th>Utilities</th>
+                        <th>Rent</th>
+                        <th>Transport</th>
+                        <th>Shopping</th>
+                        <th>Entertainment</th>
+                        <th>Savings</th>
+                        <th>Receipt</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in expenses %}
+                    <tr>
+                        {% for col in row %}
+                        <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

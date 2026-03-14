@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses | XpenseTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #8e44ad; /* Deep Violet */
+            --secondary: #a29bfe; /* Light Violet */
+            --accent: #ff7b00; 
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(142, 68, 173, 0.1), rgba(142, 68, 173, 0.1)), url('static/expenses.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #2d3436;
+        }
+
+        /* --- Header / Navbar (Dashboard Style) --- */
+        .header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+        }
+
+        /* --- Content Styling --- */
+        .container {
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            background: var(--primary);
+            width: fit-content;
+            margin: 0 auto 30px auto;
+            padding: 10px 40px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(142, 68, 173, 0.3);
+            letter-spacing: 1px;
+        }
+
+        /* --- Table Styling --- */
+        .table-wrapper {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        th:first-child { border-radius: 12px 0 0 12px; }
+        th:last-child { border-radius: 0 12px 12px 0; }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(142, 68, 173, 0.1);
+            color: #444;
+            font-weight: 500;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(162, 155, 254, 0.15);
+            transition: 0.3s;
+        }
+
+        /* Responsive Badges for Amounts */
+        td:not(:first-child) {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 1024px) {
+            .header { padding: 15px 20px; }
+            .container { padding: 20px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo"><i class="fas fa-wallet"></i> XpenseTrack</div>
+        <nav>
+            <h3 style="color: var(--primary); font-size: 16px;">Financial History</h3>
+        </nav>
+        <a href="/expenses_details" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <div class="container">
+        <h2><i class="fas fa-database"></i> Your Expense Data</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Income</th>
+                        <th>EMI</th>
+                        <th>Groceries</th>
+                        <th>Utilities</th>
+                        <th>Rent</th>
+                        <th>Transport</th>
+                        <th>Shopping</th>
+                        <th>Entertainment</th>
+                        <th>Savings</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in expenses %}
+                    <tr>
+                        {% for col in row %}
+                        <td data-label="Value">{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

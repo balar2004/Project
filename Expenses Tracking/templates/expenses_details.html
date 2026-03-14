@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Entry | XpenseTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #8e44ad; /* Deep Violet */
+            --secondary: #a29bfe; /* Light Violet */
+            --accent: #ff7b00; 
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(142, 68, 173, 0.1), rgba(142, 68, 173, 0.1)), url('static/expenses.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* --- Header / Navbar (Same as Dashboard) --- */
+        .header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #4b4b4b;
+            margin: 0 15px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .header nav a:hover { color: var(--primary); }
+
+        /* --- Form Container --- */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        form {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.5);
+        }
+
+        input:focus {
+            border-color: var(--secondary);
+            background: white;
+            box-shadow: 0 0 10px rgba(162, 155, 254, 0.2);
+        }
+
+        /* Entry Bar Analysis Pattern */
+        .field-group {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .input-stack { flex: 1; }
+
+        /* --- Recording Mic Style --- */
+        .mic-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .mic-btn:hover {
+            transform: scale(1.1);
+            background: var(--secondary);
+        }
+
+        /* Pulsing Effect when active */
+        .mic-btn.recording {
+            background: #ff4757;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 71, 87, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(142, 68, 173, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo"><i class="fas fa-wallet"></i> XpenseTrack</div>
+        <nav>
+            <a href="/dashboard"><i class="fas fa-home"></i> Home</a>
+            <a href="/view_expenses"><i class="fas fa-list"></i> View Data</a>
+        </nav>
+        <a href="/"><button style="background:#ff4757; color:white; border:none; padding:8px 20px; border-radius:20px; cursor:pointer;">Logout</button></a>
+    </header>
+
+    <div class="form-container">
+        <form action="/expenses" method="post" id="expense-form">
+            <h2><i class="fas fa-microphone"></i> Voice Entry</h2>
+
+            <div class="field-group" style="display:block;">
+                <label for="month">Entry Month</label>
+                <input type="month" id="month" name="month">
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>Monthly Income</label>
+                    <input type="text" id="income" name="income" placeholder="Total earnings...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('income')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>Loan / EMI</label>
+                    <input type="text" id="emi" name="emi" placeholder="Monthly installments...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('emi')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>Groceries</label>
+                    <input type="text" id="groceries" name="groceries" placeholder="Food and household...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('groceries')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>Utilities</label>
+                    <input type="text" id="utilities" name="utilities" placeholder="Bills, Water, Power...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('utilities')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>House Rent</label>
+                    <input type="text" id="rent" name="rent" placeholder="Monthly rent...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('rent')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="field-group">
+                <div class="input-stack">
+                    <label>Savings / Investments</label>
+                    <input type="text" id="savings" name="savings" placeholder="Amount saved...">
+                </div>
+                <button type="button" class="mic-btn" onclick="startListening('savings')"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <button type="submit">Save Financial Data</button>
+        </form>
+    </div>
+
+    <script>
+        function startListening(fieldId) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-IN';
+            
+            // Get the specific button that was clicked
+            const btn = event.currentTarget;
+            btn.classList.add('recording');
+
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript.replace(/[^\d.]/g, '');
+                document.getElementById(fieldId).value = transcript;
+                btn.classList.remove('recording');
+            };
+
+            recognition.onerror = function() {
+                btn.classList.remove('recording');
+                alert('Recognition Error. Please try again.');
+            };
+
+            recognition.onend = function() {
+                btn.classList.remove('recording');
+            };
+        }
+    </script>
+</body>
+</html>

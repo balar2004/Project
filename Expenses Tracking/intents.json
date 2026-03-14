@@ -1,0 +1,579 @@
+	{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+              "Hi",
+              "Hello",
+              "Hey",
+              "Hi there",
+              "Hello there",
+              "Good morning",
+              "Good afternoon",
+              "Good evening"
+            ],
+            "responses": [
+              "Hello! How can I help you?",
+              "Hi there! What can I do for you today?",
+              "Hey! How may I assist you?",
+              "Hi! Need any help?",
+              "Hello! I'm here to help. What do you need?"
+            ]
+          },
+          
+
+        {
+            "tag": "salary_allocation",
+            "patterns": [
+                "How do I allocate my salary to expenses?",
+                "How do I divide my salary for expenses?",
+                "how to use my salary",
+                "how to split salary",
+                "best way to spend salary",
+                "how to plan my salary",
+                "how to manage salary",
+                "Divide salary how",
+                "what to do with salary",
+                "salary saving ideas"
+            ],
+            "responses": [
+                "Why should you divide your salary?",
+                "Why should you allocate your salary?"
+            ]
+        },
+
+        {
+            "tag": "travel_plans",
+            "patterns": [
+                "I am planning to travel.",
+                "I want to save money for the future."
+            ],
+            "responses": [
+                "Okay, have you already spent money on any other expenses?",
+                "No problem, have you spent on any other expenses yet?"
+            ]
+        },
+
+        {
+            "tag": "future_purchases",
+            "patterns": [
+                "I am thinking of buying something soon.",
+                "I am planning to buy something soon.",
+                "I might purchase something soon.",
+                "I am considering buying something.",
+                "I'm thinking about making a purchase.",
+                "I'm planning to get something soon.",
+                "I want to buy something soon."
+            ],
+            "responses": [
+                "What are you planning to buy?",
+                "What thing do you want to purchase?",
+                "Can you tell me what you're thinking of buying?",
+                "What are you considering buying?",
+                "What are you planning to get?",
+                "What are you thinking about purchasing?"
+            ]
+        },
+
+        {
+            "tag": "big_purchases",
+            "patterns": [
+                "I am planning to buy a TV.",
+                "I want to buy a refrigerator.",
+                "I'm thinking of purchasing a washing machine.",
+                "I plan to buy a new AC.",
+                "I want to buy a new Car.",
+                "I want to buy a new Bike."
+            ],
+            "responses": [
+                "How much are you expecting to spend on it?",
+                "What’s the expected price for the item?"
+            ]
+        },
+
+        {
+            "tag": "expected_expense",
+            "patterns": [
+                "I'm expecting to spend around 30,000."
+            ],
+            "responses": [
+                "Okay, have you already spent money on any other expenses?",
+                "No problem, have you spent on any other expenses yet?"
+            ]
+        },
+ 
+        {
+            "tag": "home_rent",
+            "patterns": [
+                "Yes, I am spending on home rent.",
+                "I already spend on home rent."
+            ],
+            "responses": [
+                "How much do you pay for home rent each month?",
+                "Can you tell me how much you spend on rent?",
+                "What’s your monthly rent amount?",
+                "How much is your home rent cost?"
+            ]
+        },
+          
+        {
+            "tag": "home_rent_amount",
+            "patterns": [
+                "I pay 10,000 per month for home rent.",
+                "My home rent is 15,000 a month.",
+                "I am paying 12,000 monthly for home rent.",
+                "I pay 8,000 every month for my home rent.",
+                "I spend 20,000 per month on home rent.",
+                "My monthly home rent is 25,000."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? Once I know your salary, I can suggest a plan."
+            ]
+        },
+
+        {
+            "tag": "emi_payment",
+            "patterns": [
+                "I am paying EMI for my car.",
+                "I have an EMI for my home loan.", 
+                "Yes, I am currently paying an EMI."
+            ],
+            "responses": [
+                "How much do you pay for EMI each month?",
+                "Can you tell me how much you spend on EMI?",
+                "What’s your monthly EMI amount?",
+                "How much is your home EMI cost?"
+            ]
+        },
+
+        {
+            "tag": "emi_amount",
+            "patterns": [
+                "I pay 10,000 per month for EMI."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? or Once I know your salary, I can suggest a plan."
+            ]
+        },
+
+        {
+            "tag": "personal_loan",
+            "patterns": [
+                "I have a personal loan.", 
+                "I am paying off a loan.", 
+                "Yes, I have a loan that I am repaying."
+            ],
+            "responses": [
+                "How much do you pay for the personal loan each month?",
+                "Can you tell me how much you spend on the personal loan?"
+            ]
+        },
+
+        {
+            "tag": "loan_amount",
+            "patterns": [
+                "I pay 10,000 per month for a loan."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? or Once I know your salary, I can suggest a plan."
+            ]
+        },
+
+        {
+            "tag": "insurance_payment",
+            "patterns": [
+                "I have to pay for insurance.",
+                "I am already paying for life insurance.", 
+                "Yes, I spend on health insurance."
+            ],
+            "responses": [
+                "How much do you pay for insurance each month?",
+                "Can you tell me how much you spend on insurance?"
+            ]
+        },
+
+        {
+            "tag": "insurance_amount",
+            "patterns": [
+                "I pay 10,000 per month for insurance."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? or Once I know your salary, I can suggest a plan."
+            ]
+        },
+        
+
+        {
+            "tag": "groceries",
+            "patterns": [
+                "Yes, I am spending on groceries.",
+                "I already spend on groceries.",
+                "My grocery spending is high.",
+                "I pay for groceries every month.",
+                "I spend a lot on groceries.",
+                "I have grocery expenses.",
+                "I buy groceries every month.",
+                "I spend money on groceries."
+            ],
+            "responses": [
+                "How much do you spend on groceries each month?",
+                "What is your monthly grocery expense?",
+                "Can you tell me the amount you spend on groceries?",
+                "Please provide your monthly grocery spending details."
+            ]
+        },
+
+        {
+            "tag": "grocery_amount",
+            "patterns": [
+                "I pay 10,000 per month for groceries."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? or Once I know your salary, I can suggest a plan."
+            ]
+        },
+
+        {
+            "tag": "medical_expenses",
+            "patterns": [
+                "Yes, I am spending on medical expenses.",
+                "I already spend on medical expenses.",
+                "I pay for medical expenses every month.",
+                "I spend money on medical expenses."
+            ],
+            "responses": [
+                "How much do you spend on medical expenses each month?",
+                "What is your monthly medical expense?",
+                "Can you tell me the amount you spend on medical expenses?",
+                "Please provide your monthly medical spending details."
+            ]
+        },
+
+        {
+            "tag": "medical_amount",
+            "patterns": [
+                "I pay 10,000 per month for medical expenses."
+            ],
+            "responses": [
+                "Is there anything else? Please let me know, or Tell me your salary.",
+                "Anything else you're spending on? or Once I know your salary, I can suggest a plan."
+            ]
+        },
+
+        {
+            "tag": "savings_tips",
+            "patterns": [
+                "Give me tips for saving money",
+                "I want to save more money",
+                "Help me with money saving tips"
+            ],
+            "responses": [
+                "Mutual funds are a great option for long-term investments.",
+                "You can invest in stocks, real estate, or mutual funds based on your goals.",
+                "A systematic investment plan (SIP) in mutual funds could help you invest monthly."
+            ]
+        },
+
+        {
+            "tag":"saving_and_investing",
+            "patterns":[
+                "where to invest my savings",
+                "best investment options",
+                "how can i grow my savings",
+                "safe places to invest money",
+                "what are good long-term investment",
+                "should i invest in stocks or mutual funds",
+                "how to start investing with little money",
+                "is sip a good option",
+                "what is the safest way to invest money",
+                "investment tips for beginners"
+            ],
+            "responses": [
+                "You can invest your savings in mutual funds, stocks, fixed deposits, or SIPs.",
+                "Consider diversifying your portfolio with mutual funds, equity, real estate, and fixed-income assets.",
+                "SIPs (Systematic Investment Plans) are a great way to invest small amounts regularly and build wealth over time.",
+                "If you're looking for safer options, fixed deposits, PPF (Public Provident Fund), and government bonds are worth considering.",
+                "Stocks and mutual funds can offer higher returns but come with higher risks. Choose based on your risk tolerance.",
+                "Start small with SIPs or recurring deposits. As you learn more, you can explore mutual funds, ETFs, or direct stock investments.",
+                "For long-term wealth creation, mutual funds and equity investments generally perform well, especially if you stay invested.",
+                "A combination of SIPs, ELSS (Equity Linked Saving Schemes), and fixed income instruments works well for balanced growth.",
+                "Always assess your financial goals and risk appetite before choosing any investment path.",
+                "Consulting a certified financial advisor can help tailor a strategy specific to your needs."
+            ]
+
+        },
+        
+        
+        {
+            "tag":"saving_and_investing",
+            "patterns":[
+                "best platform to invest money",
+                "which app is best for investing",
+                "where can i invest money online",
+                "top investment platforms in india",
+                "online investment options",
+                "best app for sip investment",
+                "which platform is safe for investing",
+                "is groww a good app to invest",
+                "should i use zerodha or upstox",
+                "how to invest through paytm money"
+            ],
+            "responses": [
+                "Platforms like Groww, Zerodha, Upstox, and Paytm Money are popular for investing. Do you prefer stock trading or mutual funds?",
+                "Groww and Paytm Money are beginner-friendly for mutual fund SIPs, while Zerodha and Upstox are great for stock market trading.",
+                "If you're just starting out, Groww and Paytm Money offer simple interfaces for mutual fund investments.",
+                "Zerodha's Kite app is a favorite among traders for its advanced charting tools and low brokerage fees.",
+                "Upstox offers a good balance between trading tools and low costs. Great for both new and experienced investors.",
+                "Choose the platform based on your goals: mutual funds (Groww, Paytm Money), stocks (Zerodha, Upstox), or hybrid platforms.",
+                "All these platforms are SEBI registered and considered safe. Always enable 2FA and keep your credentials secure.",
+                "Looking for international stocks? You might also explore platforms like INDmoney or Vested.",
+                "Most apps offer easy KYC, quick bank linking, and investment tracking. Pick the one that fits your comfort level and goals."
+            ]
+        },
+        {
+
+		 "tag": "mutual fund plan",
+         "patterns": ["I want to invest in mutual fund"," I need to contribute in Mutual fund","I wish to put money into a mutual fund."],
+         "responses": ["Do you know about mutual funds?"]
+                
+        },
+        {
+            "tag": "mutual fund no knowledge",
+            "patterns": [
+              "No",
+              "Not really",
+              "Nope",
+              "I don't",
+              "I have no idea",
+              "Not at all",
+              "Don't know",
+              "No idea"
+            ],
+            "responses": [
+              "No worries! Mutual funds are a way to invest your money along with other people in a pool that's managed by professionals.",
+              "That's okay! Mutual funds collect money from many investors and invest it in stocks, bonds, or other assets.",
+              "Let me explain! A mutual fund is an investment vehicle that allows investors to pool their money and invest in a diversified portfolio.",
+              "Mutual funds are simple. They help you invest in many companies at once with the help of experts. Would you like to know the types of mutual funds?"
+            ]
+          },
+          {
+            "tag": "how to invest mutual funds",
+            "patterns": [
+              "How to invest in mutual funds?",
+              "What is the process to invest in mutual funds?",
+              "How can I start investing?",
+              "Ways to invest in mutual funds?",
+              "Tell me how to begin investing",
+              "What are the steps to invest in mutual funds?",
+              "I want to know how to put money in mutual funds",
+              "Guide me on mutual fund investment"
+            ],
+            "responses": [
+              "You can invest through two popular methods: SIP (Systematic Investment Plan) and Lump Sum. Do you want to know which one might be better for you?",
+              "There are mainly two ways to invest: SIP, where you invest small amounts regularly, and Lump Sum, where you invest a large amount at once. Would you like help choosing one?",
+              "Sure! You can either invest a fixed amount every month (SIP) or all at once (Lump Sum). Want to explore the benefits of each?",
+              "There are two main plans: SIP and Lump Sum. Curious which one suits your budget and goals better?"
+            ]
+          },
+          {
+            "tag": "SIP",
+            "patterns": ["What is SIP plan?"," What are the features in the SIP plan? "],
+            "responses": ["Systematic Investment Plan (SIP) is an approach which involves investing a set amount at regular intervals rather than investing a larger lump sum amount in one shot. This way, you are not attempting to capture the highs and lows of the market but rather the cost of your investment is averaged over a period. The essence of SIPs is that when the markets fall, investors automatically acquire more units. Likewise, they acquire lesser units when the market rises. This means that you buy less when the price is high whereas you buy more when the price is low. Hence, the average cost per unit drops down over time."," A Systematic Investment Plan (SIP) gives flexibility, long-term gains, regular saving, convenience, and investment starting as low as Rs. 500/Month."]
+          },
+	      {
+            "tag": "LUMPSUM",
+            "patterns": ["What is lump sum plan?"," What are the features in the lump sum plan? "],
+            "responses": ["A lumpsum investment is a common method of investing money in financial instruments like life insurance, mutual funds, fixed deposit etc. If you invest a large sum of money in a financial instrument in one go, instead of multiple smaller payments it is called the lumpsum investment.","By option for lump sum mode, individuals can invest a considerable amount in Mutual Funds. As a consequence, when the Market shows a growth period, then the investment value also increases to a large extent as compared to the value of SIP investment."]
+          },
+          {
+		
+		
+            "tag": "LUMP SUM Investment",
+            "patterns": ["I want to invest in lump sum plan"," I wish to make a lump sum investment","lump sum"],
+            "responses": ["Well,How much are you planning to invest?"," Well, How much money are you going to invest"],
+            "context": [""]
+        },
+	{
+		
+		
+            "tag": "SIP Investment",
+            "patterns": ["I want to invest in SIP plan"," I wish to make a SIP investment","sip"],
+            "responses": ["Well,How much are you planning to invest?"," Well, How much money are you going to invest?"],
+            "context": [""]
+        },
+
+
+          {
+            "tag": "money sip",
+            "patterns": ["1000"," 2000","3000","4000","5000"],
+            "responses": ["Ok, Do you want to invest it on monthly basis or weekly basis?","Ok,Would you prefer to invest it weekly or monthly?"]
+            
+        },
+
+	{
+		
+		
+            "tag": "money lumpsum",
+            "patterns": ["100000","2000000","500000"],
+            "responses": ["Ok, Do you want to invest it on monthly basis or weekly basis?","Ok,Would you prefer to invest it weekly or monthly?"]
+           
+        },
+        {
+		
+		
+            "tag": "Benifits of weekly investment",
+            "patterns": ["Explain about weekly based investment","What are the benifits of weekly based investments?","What are the advantages of investing on a weekly basis?"],
+            "responses": ["Weekly SIPs may help self-employed and those not receiving a regular income like the salaried start investing with smaller weekly amounts.","Weekly SIPs are flexible, in that an investor can pause these at any time. Also, investors can redeem their investment, provided there is no lock-in period set by the fund house."]
+            
+        },
+	{
+		
+		
+            "tag": "Benifits of monthly investment",
+            "patterns": ["explain about monthly based investments","explain about monthly basis investments","What are the benifits of monthly based investments?","What are the advantages of investing on a monthly basis?"],
+            "responses": ["A monthly investment plan, as the name suggests, it is a scheme where the investor make investments to receive a specific sum of money as pay out every month. This monthly pay out amount is based on investments that get accumulated in the scheme over time","A monthly investment plan is, as its name implies, a strategy in which the investor makes investments in order to receive a certain amount as a payout each month. The amount paid out each month is determined by investments that have grown over time in the scheme."]
+            
+        },
+        {
+		
+		
+            "tag": "weekly monthly investment",
+            "patterns": ["I want to invest in weekly basis"," I wish to make weekly investments.","weekly investments","weekly","I want to invest in monthly basis"," I wish to make monthly investments.","monthly investments","monthly"],
+            "responses": ["Well,Which type do you prefer?   1.High risk High return, 2.low risk Moderate return, 3.Moderate risk Moderate return"],
+            "context": [""]
+        },
+	{
+		
+		
+            "tag": "yearly investment",
+            "patterns": ["I want to invest in years","years"],
+            "responses": ["Well,Which type do you prefer?   1.High risk High return, 2.low risk Moderate return, 3.Moderate risk Moderate return"],
+            "context": [""]
+        },
+	
+	
+	{
+		
+		
+            "tag": "cap",
+            "patterns": ["High risk High return","low risk Moderate return ","Moderate risk Moderate return","I want to prefer"],
+            "responses": ["Ok,Which capitalization do you prefer?  Large Cap or Mid Cap or Small cap?"],
+            "context": [""]
+        },
+	{
+		
+		
+            "tag": "Large Cap",
+            "patterns": ["What is Large Cap?","Tell about large cap investment","How much market capital do those large cap  companies  have?"],
+            "responses": ["It is a market capitalization,A large-cap stock investment, defined as the stock of a company with a market capitalization of $10 billion or more, is common among both growth and value investors as a portion of an overall asset allocation.","A market capitalization is what it is. Both growth and value investors frequently include large-cap stocks as a component of their total asset allocation, which is defined as the shares of a firm with a market valuation of $10 billion or more.","Large-cap companies have a market cap of Rs 20,000 crore or more"],
+            "context": [""]
+        },
+
+	{
+            "tag": "Mid Cap",
+            "patterns": ["What is Mid Cap?","Tell about mid cap investment","How much market capital do those mid cap companies have?"],
+            "responses": ["It is a market capitalization,A mid-cap fund is a pooled investment, such as a mutual fund, that focuses on companies with a market capitalization in the middle range of listed stocks.The market cap of mid-cap companies is between Rs 5,000 crore and less than Rs 20,000 crore.", "The market cap of mid-cap companies is between Rs 5,000 crore and less than Rs 20,000 crore."],
+            "context": [""]
+        },
+
+        {
+            "tag": "cat1",
+            "patterns": ["Large Cap"],
+            "responses": ["These are catogery of large cap: low risk large cap,moderate risk large cap,high risk large cap"],
+            "context": [""]
+        },
+        {
+            "tag": "cat2",
+            "patterns": ["Mid Cap"],
+            "responses": ["There are catogery of Mid cap,low risk mid cap,moderate risk mid cap,high risk mid cap"],
+            "context": [""]
+        },
+        {
+            "tag": "cat3",
+            "patterns": ["Small Cap"],
+            "responses": ["There are catogery of Small cap,low risk small cap,moderate risk small cap,high risk small cap"],
+            "context": [""]
+        },
+
+	{
+            "tag": "low risk large cap",
+            "patterns": ["low risk large cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.HDFC Top 100 Fund-Direct Plan-Growth, 2.ICICI Prudential equity and Dept Fund, 3.IDBI India Top 100 Equity Fund Direct Plan-Growth"],
+            "context": [""]
+        },
+	{
+            "tag": "low risk mid cap",
+            "patterns": ["low risk mid cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.ICICI Prudential Multi Asset Fund, 2.Canara Robeco Equity Hybrid Fund, 3.Mirae Asset Hybrid Equity Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "low risk small cap",
+            "patterns": ["low risk small cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.Edelweiss Aggressive Hybrid Fund, 2.Baroda BMP Paribas Aggressive Hybrid Fund, 3.Quant Multi Asset Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "moderate risk large cap",
+            "patterns": ["moderate risk large cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.Mahindra Manulife Large Cap Pragati Yojana Fund, 2.SBI Equity Hybrid Fund, 3.SBI Focused Equity Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "moderate risk mid cap",
+            "patterns": ["moderate risk mid cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.Nippon India Money Market Fund, 2.Aditya Birla Sun Lif Savings Fund, 3.HDFC Floating Rate Debt Wholesale plan"],
+            "context": [""]
+        },
+	{
+            "tag": "moderate risk small cap",
+            "patterns": ["moderate risk small cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.UTI Bond Fund, 2.HDFC Dynamic Deb Fund, 3.Axis Corporate Dept Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "high risk large cap",
+            "patterns": ["high risk large cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.ICICI Prudential Bluechip Fund Direct-Growth, 2.Axis Bluechip Fund Direct Plan-Growth, 3.Mirae Asset Large Cap Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "high risk mid cap",
+            "patterns": ["high risk mid cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.ICICI Prudential Credit Risk Fund, 2.Kotak Balanced Advantage Fund, 3.SBI CPSE Bond Plus SDL sep 2026 50 50 Index Fund"],
+            "context": [""]
+        },
+	{
+            "tag": "high risk small cap",
+            "patterns": ["high risk small cap"],
+            "responses": ["These are the best mutual funds to suit your needs..1.HDFC Gold Fund, 2.Nippon India Gold Savings Fund, 3.SBI Credit Risk Fund"],
+            "context": [""]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["bye", "good bye", "see you later"],
+            "responses": ["have a nice time, welcome back again", "bye bye"],
+            "context": [""]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "okay","Thank you","thankyou", "That's helpful", "Awesome, thanks", "Thanks for helping me", "wow", "great"],
+            "responses": ["Happy to help!", "Any time!","you're welcome", "My pleasure"],
+            "context": [""]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [""],
+            "responses": ["Sorry, I didn't understand you", "Please give me more info", "Not sure I understand that"],
+            "context": [""]
+        }
+	
+        
+	
+	]	
+}
